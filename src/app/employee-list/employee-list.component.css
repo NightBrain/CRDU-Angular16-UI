@@ -1,0 +1,17 @@
+.custom-search .mat-form-field-infix {
+    border-radius: 25px;
+    overflow: hidden;
+}
+
+.custom-search input {
+    border-radius: 25px;
+    background-color: white; /* You can set the background color if needed */
+    padding: 10px; /* Optional: add padding for better UI */
+    border: 1px solid #ccc; /* Optional: add border */;
+}
+
+/* ใน employee-list.component.css หรือไฟล์ CSS ที่คุณใช้ */
+.my-swal-popup {
+    border-radius: 50px; /* กำหนดค่า border-radius ที่คุณต้องการ */
+}
+

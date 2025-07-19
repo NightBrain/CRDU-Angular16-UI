@@ -1,0 +1,84 @@
+<div class="container">
+
+    <div align="center">
+        <p class="text-3xl py-3 font-bold text-blue-500">Employee information</p>
+    </div>
+
+    <div class="p-5 mt-2 border-2 rounded-3xl bg-white">
+
+        <form #employeeForm="ngForm" (ngSubmit)="saveEmployee(employeeForm)" novalidate>
+            <div class="hidden">
+                <mat-form-field appearance="outline">
+                    <mat-label>Employee Id</mat-label>
+                    <input matInput placeholder="Employee Id" name="employeeId" [(ngModel)]="employee.employeeId" disabled>
+                    <mat-icon matSuffix>sentiment_very_satisfied</mat-icon>
+                </mat-form-field>
+            </div>
+
+            <mat-form-field> 
+                <mat-label>Employee Name</mat-label>
+                <input matInput placeholder="Employee Name" name="employeeName" [(ngModel)]="employee.employeeName" required #employeeName="ngModel">
+                <mat-icon matSuffix>person</mat-icon>
+                <mat-error *ngIf="employeeName.invalid && employeeName.touched">Employee Name is required</mat-error>
+            </mat-form-field>
+
+            <mat-form-field>
+                <mat-label>Contact Number</mat-label>
+                <input matInput placeholder="Contact Number" name="employeeContactNumber" [(ngModel)]="employee.employeeContactNumber" required #employeeContactNumber="ngModel">
+                <mat-icon matSuffix>call</mat-icon>
+                <mat-error *ngIf="employeeContactNumber.invalid && employeeContactNumber.touched">Contact Number is required</mat-error>
+            </mat-form-field>
+
+            <mat-form-field>
+                <mat-label>Address</mat-label>
+                <input matInput placeholder="Address" name="employeeAddress" [(ngModel)]="employee.employeeAddress" required #employeeAddress="ngModel">
+                <mat-icon matSuffix>apartment</mat-icon>
+                <mat-error *ngIf="employeeAddress.invalid && employeeAddress.touched">Address is required</mat-error>
+            </mat-form-field>
+
+            <mat-form-field>
+                <mat-label>Choose your department</mat-label>
+                <mat-select name="employeeDepartment" [(ngModel)]="employee.employeeDepartment" required #employeeDepartment="ngModel">
+                    <mat-option value="IT">IT</mat-option>
+                    <mat-option value="Network">Network</mat-option>
+                    <mat-option value="Repair">Repair</mat-option>
+                    <mat-option value="Web Developer">Web Developer</mat-option>
+                </mat-select>
+                <mat-error *ngIf="employeeDepartment.invalid && employeeDepartment.touched">Please select a department</mat-error>
+            </mat-form-field>
+
+            <div>
+                <label>Gender</label>
+                <mat-radio-group aria-label="Select an option" [(ngModel)]="employee.gender" name="employeeGender">
+                    <mat-radio-button [checked]="checkGender('Male')" (click)="selectGender('Male')" value="Male">Male</mat-radio-button>
+                    <mat-radio-button [checked]="checkGender('Female')" (click)="selectGender('Female')" value="Female">Female</mat-radio-button>
+                </mat-radio-group>
+            </div>                        
+
+            <mat-form-field appearance="outline" class="mt-2">
+                <mat-label>Employee Skills</mat-label>
+                <input matInput placeholder="Employee Skills" name="employeeSkills" [(ngModel)]="employee.employeeSkills" disabled>
+                <mat-icon matSuffix>menu_book</mat-icon>
+            </mat-form-field>
+
+            <div>
+                <label>Skills</label>
+                <section class="example-section">
+                    <mat-checkbox (change)="onSkillsChanges($event)" value="UX/UI" class="example-margin" [checked]="checkSkills('UX/UI')">UX/UI</mat-checkbox>
+                    <mat-checkbox (change)="onSkillsChanges($event)" value="HTML" class="example-margin" [checked]="checkSkills('HTML')">HTML</mat-checkbox>
+                    <mat-checkbox (change)="onSkillsChanges($event)" value="CSS" class="example-margin" [checked]="checkSkills('CSS')">CSS</mat-checkbox>
+                    <mat-checkbox (change)="onSkillsChanges($event)" value="Javascript" class="example-margin" [checked]="checkSkills('Javascript')">Javascript</mat-checkbox>
+                    <mat-checkbox (change)="onSkillsChanges($event)" value="Angular" class="example-margin" [checked]="checkSkills('Angular')">Angular</mat-checkbox>
+                    <mat-checkbox (change)="onSkillsChanges($event)" value="Spring Boot" class="example-margin" [checked]="checkSkills('Spring Boot')">Spring Boot</mat-checkbox>
+                </section>
+            </div>
+
+            <mat-divider></mat-divider>
+
+            <div class="text-center mt-3">
+                <button class="m-2 p-2 text-white font-medium text-xl bg-violet-500 rounded-full drop-shadow-xl" [disabled]="employeeForm.invalid">Save Employee</button>
+            </div>
+
+        </form>
+    </div>
+</div>
